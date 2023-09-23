@@ -16,6 +16,7 @@ import PopularJobCard from '../../common/cards/popular/PopularJobCard'
 import styles from './popularjobs.style'
 
 const Popularjobs = () => {
+  const [selectedJob, setSelectedJob] = useState({})
   const router = useRouter()
 
   const { data, isError, isLoading } = useFetch('search', {
@@ -23,6 +24,11 @@ const Popularjobs = () => {
     num_pages: 1,
     page: 1,
   })
+
+  const handlePress = (job) => {
+    setSelectedJob(job)
+    router.push(`/job-details/${job?.job_id}`)
+  }
 
   return (
     <View style={styles.container}>
@@ -41,7 +47,13 @@ const Popularjobs = () => {
         ) : (
           <FlatList
             data={data}
-            renderItem={({ item }) => <PopularJobCard item={item} />}
+            renderItem={({ item }) => (
+              <PopularJobCard
+                item={item}
+                handlePress={handlePress}
+                selectedJob={selectedJob}
+              />
+            )}
             keyExtractor={(item) => item?.job_id}
             contentContainerStyle={{
               columnGap: SIZES.medium,
