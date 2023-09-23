@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { View, Text, SafeAreaView } from 'react-native'
 import { Stack, useRouter } from 'expo-router'
 
-import { COLORS, SIZES, SHADOWS, FONT, icons } from '../constants'
+import { COLORS, SIZES, SHADOWS, FONT, icons, images } from '../constants'
 import {
   Nearbyjobs,
   Popularjobs,
@@ -23,7 +23,7 @@ export default Home = () => {
             <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%' />
           ),
           headerRight: () => (
-            <ScreenHeaderBtn iconUrl={icons.profile} dimension='60%' />
+            <ScreenHeaderBtn iconUrl={images.profile} dimension='60%' />
           ),
           headerTitle: '',
         }}
